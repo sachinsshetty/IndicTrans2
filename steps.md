@@ -33,9 +33,11 @@ cd $root_dir
 
 pip install mosestokenizer nltk
 
+pip install nltk sacremoses regex pandas mock transformers sacrebleu  mosestokenizer ctranslate2 gradio
 
 
 git lfs install
 git clone https://huggingface.co/adalat-ai/ct2-rotary-indictrans2-en-indic-dist-200M
 
 
+pip install urduhack[tf]

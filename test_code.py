@@ -2,7 +2,7 @@ from inference.engine import Model
 
 ckpt_dir = "path_to_downloaded_model_directory"
 
-ckpt_dir = "/home/sachin/code/dwani_org/new_translate/IndicTrans2/ckpoint/ct2-rotary-indictrans2-en-indic-dist-200M"
+ckpt_dir = "/home/sachin/code/dwani_org/new_translate/IndicTrans2/ckpoint/ct2-rotary-indictrans2-en-indic-dist-200M/en-indic-200m-ct2/ctranslate2_model"
 model = Model(ckpt_dir, model_type="ctranslate2")
 
 sents = ["This is a test sentence.", "Translate this too."]

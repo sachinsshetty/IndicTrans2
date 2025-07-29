@@ -1,0 +1,58 @@
+[project]
+name = "indictrans2"
+version = "0.1.0"  # Placeholder version; update as needed
+description = "IndicTrans2: Multilingual translation for Indian languages"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }  # Assumes a LICENSE file exists in the repo
+authors = [
+    { name = "Sachin S. Shetty", email = "sachinsshetty@gmail.com" }  # Update with actual maintainer details
+]
+dependencies = [
+    "torch==2.7.1",
+    "torchvision",
+    "torchaudio==2.7.1",
+    "sentencepiece>=0.2.0",
+    "fairseq @ git+https://github.com/pytorch/fairseq.git@main",
+    "indic-nlp-library @ git+https://github.com/anoopkunchukuttan/indic_nlp_library.git@0.92",
+]
+
+[project.urls]
+Homepage = "https://github.com/sachinsshetty/IndicTrans2"
+Repository = "https://github.com/sachinsshetty/IndicTrans2.git"
+Issues = "https://github.com/sachinsshetty/IndicTrans2/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = [
+    "indictrans2/*.py",
+    "huggingface/*.py",
+    "inference/*.py",
+]
+exclude = [
+    "indic_nlp_resources/*",
+    "venv/*",
+    "fairseq/*",
+    "indic_nlp_library/*",
+]
+
+[tool.hatch.envs.default]
+dependencies = [
+    "torch==2.7.1",
+    "torchvision",
+    "torchaudio==2.7.1",
+    "sentencepiece>=0.2.0",
+    "fairseq @ git+https://github.com/pytorch/fairseq.git@main",
+    "indic-nlp-library @ git+https://github.com/anoopkunchukuttan/indic_nlp_library.git@0.92",
+]
+
+[tool.hatch.envs.default.scripts]
+setup-indic-resources = """
+    if [ ! -d "indic_nlp_resources" ]; then
+        git clone https://github.com/anoopkunchukuttan/indic_nlp_resources.git
+    fi
+    export INDIC_RESOURCES_PATH=$(pwd)/indic_nlp_resources
+"""
